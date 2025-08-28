@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-white/90 border-b border-slate-200">
-      <div className="container h-22 flex items-center justify-between">
+      <div className="container h-36 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img src="/logo.png" alt="INAVA Global"
             className="h-14 w-14 md:h-16 md:w-16 rounded-full ring-1 ring-slate-200" />
