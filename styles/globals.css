@@ -7,11 +7,11 @@ body::after {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 18rem;  /* ~288px */
+  width: 18rem;  /* ~300px */
   height: 18rem;
   background: url("/watermark.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.06;
+  opacity: 0.08;
   z-index: 10;           /* bring above white sections */
   pointer-events: none;  /* never intercept clicks */
 }
