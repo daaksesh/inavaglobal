@@ -4,9 +4,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-white/90 border-b border-slate-200">
       <div className="container h-16 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="INAVA Global" className="h-10 w-10 md:h-12 md:w-12 rounded-full ring-1 ring-slate-200" />
-          <span className="font-semibold tracking-wide">INAVA GLOBAL</span>
+        <div className="flex items-center gap-4">
+          <img src="/logo.png" alt="INAVA Global" className="h-14 w-14 md:h-16 md:w-16 rounded-full ring-1 ring-slate-200" />
+          <span className="font-bold tracking-wide text-lg md:text-xl">INAVA GLOBAL</span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm">
           <Link href="/" className="hover:text-slate-600">Home</Link>
