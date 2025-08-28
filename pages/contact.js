@@ -41,6 +41,7 @@ export default function Contact() {
               Prefer email? <b>hello@inavaglobal.com</b>
             </div>
             <p className="mt-3 text-xs text-slate-500">By submitting, you agree to our Privacy Policy and Data Processing Addendum.</p>
+            <p className="mt-3 text-lg font-semibold text-navy">Prefer to talk? Call us at <a href="tel:+919004665866" className="text-gold hover:underline ml-2"> +919004665866</a></p>
           </div>
         </div>
       </section>
