@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container py-10 grid md:grid-cols-4 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <img src="/Base Logo.png" alt="INAVA Global" className="h-10 w-10 rounded-full ring-1 ring-slate-200" />
+            <img src="/logo.png" alt="INAVA Global" className="h-10 w-10 rounded-full ring-1 ring-slate-200" />
             <span className="font-semibold">INAVA GLOBAL</span>
           </div>
           <p className="mt-3 text-slate-600">Offshore finance operations, automation, and advisory for global SMEs and scale‑ups.</p>
