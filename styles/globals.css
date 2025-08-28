@@ -5,15 +5,15 @@
 body::after {
   content: "";
   position: fixed;
-  bottom: 2rem;   /* 32px up from bottom */
-  right: 2rem;    /* 32px from right edge */
-  width: 300px;   /* adjust size */
-  height: 300px;  /* adjust size */
+  bottom: 2rem;
+  right: 2rem;
+  width: 18rem;  /* ~288px */
+  height: 18rem;
   background: url("/watermark.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.08;   /* faint */
-  z-index: -1;     /* stays behind content */
-  pointer-events: none; /* doesn’t block clicks */
+  opacity: 0.06;
+  z-index: 10;           /* bring above white sections */
+  pointer-events: none;  /* never intercept clicks */
 }
 
 .btn-primary { @apply inline-flex items-center justify-center rounded-xl bg-gold px-6 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition; }
