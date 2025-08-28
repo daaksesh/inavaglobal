@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { @apply bg-white text-slate-900; }
+html, body {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/watermark.png") center center no-repeat;
+  background-size: 500px; /* adjust size */
+  opacity: 0.05;          /* makes it shaded */
+  z-index: -1;            /* stays behind everything */}
 
 .btn-primary { @apply inline-flex items-center justify-center rounded-xl bg-gold px-6 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition; }
 .btn-secondary { @apply inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-5 py-3 font-medium hover:bg-slate-50; }
