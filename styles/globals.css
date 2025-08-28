@@ -6,9 +6,9 @@ body::after {
   content: "";
   position: fixed;
   top: 50%;
-  right: -150px;          /* pushes it partially off screen */
-  width: 600px;           /* adjust size */
-  height: 600px;
+  right: -500px;          /* pushes it partially off screen */
+  width: 1000px;           /* adjust size */
+  height: 1000px;
   background: url("/watermark.png") no-repeat center center;
   background-size: contain;
   opacity: 0.05;          /* faint */
