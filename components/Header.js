@@ -7,7 +7,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <img src="/logo.png" alt="INAVA Global"
             className="h-20 w-20 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200" />
-          <span className="font-extrabold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
+          <span className="font-bold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xl">
           <Link href="/" className="hover:text-slate-600">Home</Link>
