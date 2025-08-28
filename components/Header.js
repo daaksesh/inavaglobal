@@ -17,7 +17,7 @@ export default function Header() {
           <Link href="/contact" className="hover:text-slate-600">Contact</Link>
         </nav>
         {/* Phone number (desktop only) */}
-        <a href="tel:+919876543210" className="hidden md:inline text-sm font-medium text-slate-700 hover:text-navy">
+        <a href="tel:+919004665866" className="hidden md:inline text-sm font-medium text-slate-700 hover:text-navy">
         📞 +919004665866
         </a>
         <Link href="/contact" className="btn-primary">Book a discovery call</Link>
