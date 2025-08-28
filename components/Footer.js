@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="font-semibold mb-2">Contact</h4>
-          <p className="text-slate-600">Mumbai · US/EU partner pods<br/>hello@inavaglobal.com</p>
+          <p className="text-slate-600">📞 <a href="tel:+919876543210" className="hover:text-navy">+91 98765 43210</a><br/>✉️ hello@inavaglobal.com</p>
           <div className="mt-3 text-slate-500">© {new Date().getFullYear()} INAVA Global. All rights reserved.</div>
         </div>
       </div>
