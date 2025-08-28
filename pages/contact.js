@@ -24,7 +24,7 @@ export default function Contact() {
             </div>
             <div className="flex flex-wrap gap-3">
               <a href="tel:+919004665866" className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold hover:bg-[#E6CF84] transition">📞 Call now</a>
-              <a href="/contact#form" className="$1">$2</a>
+              <a href="/contact#form" className="$1"> </a>
               <a href="https://calendly.com/your-calendly/30min" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-5 py-3 font-medium hover:bg-slate-50">Book discovery call</a>
             </div>
           </div>
