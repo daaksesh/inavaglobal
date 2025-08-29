@@ -8,10 +8,10 @@ export default function Header() {
     <header className="sticky top-0 z-32 backdrop-blur bg-white/90 border-b border-slate-200">
       <div className="container h-32 flex items-center justify-between">
         {/* Logo + Brand */}
-        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 min-w-0">
           <img src="/logo.png" alt="INAVA Global"
-          className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200" />
-          <span className="hidden sm:inline font-bold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
+          className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200"/>
+          <span className="font-bold tracking-wide text-base md:text-2xl leading-tight max-w-[52vw] sm:max-w-none">INAVA GLOBAL</span>
         </div>
 
         {/* Desktop Navigation */}
