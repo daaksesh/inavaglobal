@@ -1,14 +1,20 @@
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-32 backdrop-blur bg-white/90 border-b border-slate-200">
       <div className="container h-32 flex items-center justify-between">
+        {/* Logo + Brand */}
         <div className="flex items-center gap-4">
           <img src="/logo.png" alt="INAVA Global"
             className="h-20 w-20 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200" />
           <span className="font-bold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
         </div>
+
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-xl">
           <Link href="/" className="hover:text-slate-600">Home</Link>
           <Link href="/services" className="hover:text-slate-600">Services</Link>
@@ -16,11 +22,48 @@ export default function Header() {
           <Link href="/about" className="hover:text-slate-600">About</Link>
           <Link href="/contact" className="hover:text-slate-600">Contact</Link>
         </nav>
-        {/* Phone number as secondary button */}
-        <a href="tel:+919004665866" className="hidden md:inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition">
-        📞 +91 90046 65866
+
+        {/* Desktop Phone CTA */}
+        <a href="tel:+919004665866"
+           className="hidden md:inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition">
+          📞 +91 90046 65866
         </a>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 p-2"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+            {open
+              ? <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+              : <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
+            }
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-slate-200 bg-white">
+          <div className="container py-3 flex flex-col gap-2">
+            <Link href="/" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Home</Link>
+            <Link href="/services" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Services</Link>
+            <Link href="/process" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Engagement Process</Link>
+            <Link href="/about" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>About</Link>
+            <Link href="/contact" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Contact</Link>
+
+            <div className="mt-2 flex flex-col gap-2">
+              <a href="tel:+919004665866"
+                 className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition">
+                📞 +91 90046 65866
+              </a>
+            </div>
+          </div>
         </div>
+      )}
     </header>
   );
 }
