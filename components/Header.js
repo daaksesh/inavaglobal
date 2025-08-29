@@ -10,8 +10,8 @@ export default function Header() {
         {/* Logo + Brand */}
         <div className="flex items-center gap-4">
           <img src="/logo.png" alt="INAVA Global"
-            className="h-20 w-20 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200" />
-          <span className="font-bold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
+          className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full ring-1 ring-slate-200" />
+          <span className="hidden sm:inline font-bold tracking-wide text-lg md:text-2xl">INAVA GLOBAL</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -31,10 +31,10 @@ export default function Header() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 p-2"
-          aria-label="Open menu"
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
+        className="md:hidden shrink-0 inline-flex items-center gap-2 justify-center rounded-xl border border-slate-400 bg-white p-2 shadow-sm"
+        aria-label="Open menu"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
         >
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
             {open
