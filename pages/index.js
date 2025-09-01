@@ -12,7 +12,10 @@ export default function Home() {
             <p className="mt-5 text-lg text-slate-700 max-w-2xl">AI-powered offshore finance operations—bookkeeping to CFO insights. Faster closes, stronger compliance, smarter decisions.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="/services" className="btn-secondary">Explore services</a>
-              <a href="/contact" className="btn-primary">Book discovery call</a>
+              <a href="https://calendly.com/hello-inavaglobal/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">
+  Book discovery call
+</a>
+
             </div>
           </div>
           <div className="lg:col-span-5">
