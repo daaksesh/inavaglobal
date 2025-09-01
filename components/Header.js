@@ -20,7 +20,10 @@ export default function Header() {
           <Link href="/services" className="hover:text-slate-600">Services</Link>
           <Link href="/process" className="hover:text-slate-600">Engagement Process</Link>
           <Link href="/about" className="hover:text-slate-600">About</Link>
-          <Link href="/contact" className="hover:text-slate-600">Contact</Link>
+          <a href="https://calendly.com/hello-inavaglobal/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">
+  Book a discovery call
+</a>
+
         </nav>
 
         {/* Desktop Phone CTA */}
