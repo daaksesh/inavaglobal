@@ -3,33 +3,81 @@ import { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 
 export default function Contact() {
-  const calendlyRef = useRef<HTMLDivElement | null>(null);
-  const [calendlyLoaded, setCalendlyLoaded] = useState(false);
+  const calendlyRef = useRef(null);
   const [loadRequested, setLoadRequested] = useState(false);
+  const [calendlyScriptLoaded, setCalendlyScriptLoaded] = useState(false);
 
-  // load script once
+  // Load Calendly script once when loadRequested becomes true
   useEffect(() => {
-    if (!loadRequested || calendlyLoaded) return;
+    if (!loadRequested) return;
+    if (typeof window === 'undefined') return; // SSR guard
 
-    const scriptId = 'calendly-widget-script';
-    if (!document.getElementById(scriptId)) {
-      const s = document.createElement('script');
-      s.id = scriptId;
-      s.src = 'https://assets.calendly.com/assets/external/widget.js';
-      s.async = true;
-      s.onload = () => {
-        setCalendlyLoaded(true);
-      };
-      document.body.appendChild(s);
-    } else {
-      // script already on page — mark loaded
-      setCalendlyLoaded(true);
+    const SCRIPT_ID = 'calendly-widget-script';
+    const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
+
+    function initWidget() {
+      try {
+        if (window.Calendly && calendlyRef.current) {
+          // wipe previous content then init
+          calendlyRef.current.innerHTML = '';
+          window.Calendly.initInlineWidget({
+            url: 'https://calendly.com/hello-inavaglobal/30min',
+            parentElement: calendlyRef.current,
+            prefill: {},
+            utm: {}
+          });
+        }
+      } catch (err) {
+        // show helpful console message for debugging
+        // eslint-disable-next-line no-console
+        console.error('Calendly init error:', err);
+      }
     }
-  }, [loadRequested, calendlyLoaded]);
 
-  // optional: auto-load when calendly container is visible (IntersectionObserver)
+    // If script is already present
+    const existing = document.getElementById(SCRIPT_ID);
+    if (existing) {
+      // if Calendly object already available -> init immediately, else wait a tick
+      if (window.Calendly) {
+        initWidget();
+        setCalendlyScriptLoaded(true);
+      } else {
+        // script present but not yet initialized (rare) — wait for load event
+        existing.addEventListener('load', () => {
+          initWidget();
+          setCalendlyScriptLoaded(true);
+        }, { once: true });
+      }
+      return;
+    }
+
+    // otherwise add the script
+    const s = document.createElement('script');
+    s.id = SCRIPT_ID;
+    s.src = scriptSrc;
+    s.async = true;
+    s.onload = () => {
+      setCalendlyScriptLoaded(true);
+      // init after a small timeout to ensure div exists in DOM
+      setTimeout(initWidget, 50);
+    };
+    s.onerror = () => {
+      // eslint-disable-next-line no-console
+      console.error('Failed to load Calendly script:', scriptSrc);
+    };
+    document.body.appendChild(s);
+
+    // cleanup not strictly necessary for script, but keep pattern
+    return () => {
+      // do not remove script on unmount (so future navigations can reuse it)
+    };
+  }, [loadRequested]);
+
+  // Optional: auto-request load when calendly container scrolls into view
   useEffect(() => {
-    if (!calendlyRef.current || calendlyLoaded) return;
+    if (!calendlyRef.current || loadRequested) return;
+    if (typeof window === 'undefined') return;
+
     const el = calendlyRef.current;
     const io = new IntersectionObserver(
       (entries) => {
@@ -40,11 +88,11 @@ export default function Contact() {
           }
         });
       },
-      { rootMargin: '200px' } // start loading slightly before in view
+      { rootMargin: '200px' }
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [calendlyLoaded]);
+  }, [loadRequested]);
 
   return (
     <Layout>
@@ -56,8 +104,7 @@ export default function Contact() {
             Contact INAVA Global
           </h1>
           <p className="mt-4 max-w-3xl text-slate-700 text-lg">
-            Every engagement starts with a short conversation to understand your systems,
-            entity count, timelines and goals. Reach us directly or send a quick message below.
+            Every engagement starts with a short conversation to understand your systems, entity count, timelines and goals. Reach us directly or send a quick message below.
           </p>
         </div>
       </header>
@@ -74,20 +121,15 @@ export default function Contact() {
           </div>
 
           <div className="w-full md:w-auto flex gap-3">
-            <a
-              href="tel:+919004665866"
-              className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold hover:bg-[#E6CF84] transition"
-            >
+            <a href="tel:+919004665866" className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold hover:bg-[#E6CF84] transition">
               📞 Call now
             </a>
 
-            {/* Single anchor to focus/scroll to calendly area */}
             <button
               onClick={() => {
-                // scroll to calendly container
+                // scroll to calendly container and request load
                 const el = document.getElementById('calendly-area');
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // also request load
                 setLoadRequested(true);
               }}
               className="inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-5 py-3 font-medium hover:bg-slate-50"
@@ -96,10 +138,7 @@ export default function Contact() {
               Book a call
             </button>
 
-            <a
-              href="mailto:hello@inavaglobal.com"
-              className="inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-5 py-3 font-medium hover:bg-slate-50"
-            >
+            <a href="mailto:hello@inavaglobal.com" className="inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-5 py-3 font-medium hover:bg-slate-50">
               ✉️ Email us
             </a>
           </div>
@@ -113,9 +152,7 @@ export default function Contact() {
           <div className="lg:col-span-7">
             <div className="rounded-3xl ring-1 ring-slate-200 bg-white p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
-              <p className="mt-2 text-slate-600">
-                Tell us briefly what you need. We’ll review and reply with tailored next steps.
-              </p>
+              <p className="mt-2 text-slate-600">Tell us briefly what you need. We’ll review and reply with tailored next steps.</p>
 
               <form className="mt-6 grid sm:grid-cols-2 gap-4" onSubmit={(e) => e.preventDefault()}>
                 <input className="rounded-xl ring-1 ring-slate-300 px-4 py-3" placeholder="Full Name" />
@@ -137,15 +174,9 @@ export default function Contact() {
                   <option>Global Expansion</option>
                   <option>Transaction Readiness</option>
                 </select>
-                <textarea
-                  className="rounded-xl ring-1 ring-slate-300 px-4 py-3 sm:col-span-2"
-                  rows={6}
-                  placeholder="Briefly describe your requirements (systems, volumes, deadlines)"
-                />
+                <textarea className="rounded-xl ring-1 ring-slate-300 px-4 py-3 sm:col-span-2" rows={6} placeholder="Briefly describe your requirements (systems, volumes, deadlines)" />
                 <div className="sm:col-span-2 flex gap-3">
-                  <button type="submit" className="btn-primary">
-                    Send message
-                  </button>
+                  <button type="submit" className="btn-primary">Send message</button>
                   <button
                     type="button"
                     className="btn-secondary"
@@ -160,9 +191,7 @@ export default function Contact() {
                 </div>
               </form>
 
-              <p className="mt-3 text-xs text-slate-500">
-                By submitting, you agree to our Privacy Policy and Data Processing Addendum.
-              </p>
+              <p className="mt-3 text-xs text-slate-500">By submitting, you agree to our Privacy Policy and Data Processing Addendum.</p>
             </div>
           </div>
 
@@ -172,38 +201,11 @@ export default function Contact() {
               <h3 className="text-xl font-semibold text-navy">Schedule directly</h3>
               <p className="mt-2 text-slate-600">Pick a convenient slot for a 30-minute discovery call.</p>
 
-              {/* If not loaded — show CTA to load calendar */}
-              {!calendlyLoaded && (
-                <div className="mt-4">
-                  <p className="text-sm text-slate-600 mb-3">Load our calendar (fast) to book a slot:</p>
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => setLoadRequested(true)}
-                      className="inline-flex items-center justify-center rounded-xl bg-navy text-white px-4 py-2 font-medium"
-                    >
-                      Load calendar
-                    </button>
-                    <a
-                      href="https://calendly.com/hello-inavaglobal/30min"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl ring-1 ring-slate-300 px-4 py-2 font-medium hover:bg-slate-50"
-                    >
-                      Open Calendly (new tab)
-                    </a>
-                  </div>
-                </div>
-              )}
-
-              {/* Calendly inline container */}
-              <div id="calendly-area" ref={calendlyRef} className="mt-6">
-                {loadRequested && (
-                  <div
-                    className="calendly-inline-widget"
-                    data-url="https://calendly.com/hello-inavaglobal/30min"
-                    style={{ minWidth: '280px', height: '600px' }}
-                  />
+              <div id="calendly-area" ref={calendlyRef} className="mt-6" style={{ minWidth: '280px', height: '600px' }}>
+                {!calendlyScriptLoaded && !loadRequested && (
+                  <div className="text-sm text-slate-500">Calendar will load when requested.</div>
                 )}
+                {/* The actual widget will be injected by Calendly script into this container */}
               </div>
             </div>
 
