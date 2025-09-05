@@ -33,7 +33,7 @@ export default function Header() {
           href="tel:+919004665866"
           className="hidden md:inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
         >
-          "📞Call Us Now"
+          📞Call Us Now
         </a>
 
         {/* Mobile Hamburger */}
@@ -68,7 +68,7 @@ export default function Header() {
                 href="tel:+919004665866"
                 className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
               >
-                "📞Call Us Now"
+                📞Call Us Now
               </a>
             </div>
           </div>
