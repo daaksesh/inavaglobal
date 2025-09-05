@@ -25,6 +25,7 @@ export default function Header() {
           <Link href="/services" className="hover:text-slate-600">Services</Link>
           <Link href="/process" className="hover:text-slate-600">Engagement Process</Link>
           <Link href="/about" className="hover:text-slate-600">About</Link>
+          <Link href="/contact" className="hover:text-slate-600">Contact</Link>
         </nav>
 
         {/* Desktop Phone CTA */}
