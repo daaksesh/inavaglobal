@@ -9,7 +9,7 @@ export default function Home() {
         <div className="container py-16 md:py-24 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-navy">Empowering Businesses with <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldsoft">Next‑Gen Finance</span></h1>
-            <p className="mt-5 text-lg text-slate-700 max-w-2xl">AI-powered offshore finance operations—bookkeeping to CFO insights. Faster closes, stronger compliance, smarter decisions.</p>
+            <p className="mt-5 text-lg text-slate-700 max-w-2xl">AI-powered offshore finance operations for UK & US businesses—bookkeeping to board-ready CFO insights.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="/services" className="btn-secondary">Explore services</a>
               <a href="https://calendly.com/hello-inavaglobal/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">
