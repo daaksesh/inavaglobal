@@ -1,156 +1,115 @@
 import Layout from '../components/Layout'
+import { FileText, Users, Briefcase, BarChart3, ShieldCheck, Settings, Globe, TrendingUp, Building2 } from 'lucide-react'
 
 export default function Services() {
-  const Section = ({title, bullets, outcome, seo}) => (
-    <section className="container py-12">
-      <div className="grid md:grid-cols-12 gap-8">
-        <div className="md:col-span-4">
-          <h2 className="text-2xl font-bold text-navy">{title}</h2>
-        </div>
-        <div className="md:col-span-8">
-          <ul className="list-disc pl-5 space-y-2 text-slate-700">
-            {bullets.map((b, i)=> <li key={i}>{b}</li>)}
-          </ul>
-          <p className="mt-4 font-medium text-slate-800">Outcome: {outcome}</p>
-          <p className="mt-1 text-xs text-slate-500">SEO: {seo}</p>
-        </div>
-      </div>
-      <hr className="mt-8 border-slate-200"/>
-    </section>
-  )
-
   return (
     <Layout>
+      {/* HERO */}
       <header className="section bg-[#F9F5EE]">
-        <div className="container">
-          <span className="badge">End‑to‑end finance & accounting</span>
-          <h1 className="mt-3 text-4xl font-extrabold text-navy">Services</h1>
-          <p className="mt-3 max-w-3xl text-slate-700">
-            A single partner for bookkeeping, payroll, reporting, compliance, CFO insights, automation, and ESG. Bespoke, SLA‑driven engagements with secure, AI‑enabled delivery.
+        <div className="container text-center">
+          <span className="badge">What we do</span>
+          <h1 className="mt-3 text-4xl md:text-5xl font-extrabold text-navy">Our Services</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-slate-700 text-lg">
+            From day-to-day accounting to board-ready insights, INAVA Global delivers AI-enabled finance operations with the human expertise you trust.
           </p>
         </div>
       </header>
 
-      <Section
-        title="Bookkeeping & Year‑End Accounting"
-        bullets={[
-          "Monthly bookkeeping, reconciliations, AP/AR processing",
-          "Year‑end financial statements and tax‑ready reporting",
-          "Audit‑ready documentation aligned with IFRS / US GAAP"
-        ]}
-        outcome="Accurate, reliable numbers you can trust for compliance and decision‑making."
-        seo="bookkeeping outsourcing, year‑end accounting services, startup accounting support"
-      />
+      {/* CORE FINANCE OPS */}
+      <section className="section bg-white">
+        <div className="container">
+          <h2 className="text-2xl font-bold text-navy mb-8">Core Finance Operations</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: FileText, title: 'Bookkeeping & Year-End', desc: 'Accurate, audit-ready books every month and at year-end.' },
+              { icon: Users, title: 'Payroll & Compliance', desc: 'On-time payroll with filings handled seamlessly.' },
+              { icon: BarChart3, title: 'Management Reporting', desc: 'Board-ready packs with KPIs and variance insights.' },
+              { icon: Briefcase, title: 'AP & AR Outsourcing', desc: 'Faster cycles, fewer errors, and improved cash control.' },
+              { icon: ShieldCheck, title: 'Audit Assistance', desc: 'Clean tie-outs, complete PBCs, and smooth auditor handoff.' },
+            ].map((s, i) => (
+              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
+                <s.icon className="h-8 w-8 text-gold mb-4" />
+                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
+                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <Section
-        title="Payroll Processing & Compliance"
-        bullets={[
-          "Salary runs, withholdings, and employee compliance filings",
-          "Social security, tax filings, and statutory registrations",
-          "Scalable payroll for global employees"
-        ]}
-        outcome="Employees paid on time, compliance secured, stress eliminated."
-        seo="outsourced payroll services, SME payroll compliance, global payroll outsourcing"
-      />
+      {/* STRATEGIC FINANCE */}
+      <section className="section bg-[#F9F5EE]">
+        <div className="container">
+          <h2 className="text-2xl font-bold text-navy mb-8">Strategic Finance</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Settings, title: 'Controller-as-a-Service', desc: 'GAAP/IFRS finalization with policies and controls that stick.' },
+              { icon: TrendingUp, title: 'Virtual CFO & FP&A', desc: 'Budgets, forecasts, and cash runway you can act on.' },
+              { icon: Globe, title: 'Global Expansion', desc: 'Entity setup, cross-border compliance, and intercompany flows.' },
+            ].map((s, i) => (
+              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
+                <s.icon className="h-8 w-8 text-gold mb-4" />
+                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
+                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <Section
-        title="Management Reporting & Financial Packs"
-        bullets={[
-          "Monthly packs: P&L, Balance Sheet, Cash Flow",
-          "Customized KPI dashboards for founders and boards",
-          "Variance analysis with actionable insights"
-        ]}
-        outcome="Financial clarity to make smarter business decisions."
-        seo="financial reporting outsourcing, management accounting, KPI dashboards"
-      />
+      {/* ADVISORY & RISK */}
+      <section className="section bg-white">
+        <div className="container">
+          <h2 className="text-2xl font-bold text-navy mb-8">Advisory & Risk</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Building2, title: 'Transaction Readiness', desc: 'Financial due diligence and prep for investors or exits.' },
+              { icon: ShieldCheck, title: 'Continuous Monitoring', desc: 'Exception alerts and fraud flags before they become losses.' },
+              { icon: BarChart3, title: 'ESG / CSRD', desc: 'KPIs, governance frameworks, and draft disclosures.' },
+            ].map((s, i) => (
+              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
+                <s.icon className="h-8 w-8 text-gold mb-4" />
+                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
+                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <Section
-        title="Accounts Payable & Receivable Outsourcing"
-        bullets={[
-          "Vendor bill processing, approvals, payment scheduling",
-          "Customer invoicing, collections, and reconciliation",
-          "AI‑driven AP/AR automation"
-        ]}
-        outcome="Faster turnaround, improved cash flow, reduced manual workload."
-        seo="AP outsourcing, AR collections, outsourced cash flow management"
-      />
+      {/* WHO WE HELP */}
+      <section className="section bg-[#F9F5EE]">
+        <div className="container text-center">
+          <h2 className="text-2xl font-bold text-navy mb-8">Who We Help</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: 'Startups', desc: 'From zero to Series A—finance you can scale with.' },
+              { title: 'Scaling SMEs', desc: 'Tighter controls and insights for growing teams.' },
+              { title: 'Global Subsidiaries', desc: 'Entity management and group reporting simplified.' },
+              { title: 'Accounting Firms', desc: 'Offshore pods for year-end, AP/AR, and audit prep.' },
+            ].map((c, i) => (
+              <div key={i} className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 shadow-sm hover:shadow-md transition">
+                <h3 className="font-semibold text-lg text-navy">{c.title}</h3>
+                <p className="mt-2 text-slate-600 text-sm">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <Section
-        title="Audit & Year‑End Assistance"
-        bullets={[
-          "PBC documentation and reconciliations",
-          "Year‑end tie‑outs and auditor coordination",
-          "Clean‑ups and adjustments for audit readiness"
-        ]}
-        outcome="Hassle‑free audits with minimal disruption to your business."
-        seo="audit support outsourcing, year‑end audit preparation, SME audit assistance"
-      />
-
-      <Section
-        title="Controller‑as‑a‑Service"
-        bullets={[
-          "IFRS/US GAAP finalization and consolidation",
-          "Internal controls, policies, and governance frameworks",
-          "Audit compliance and risk reporting"
-        ]}
-        outcome="Professional‑grade financial control without the cost of a senior hire."
-        seo="outsourced controller, compliance outsourcing, financial governance services"
-      />
-
-      <Section
-        title="Virtual CFO & FP&A"
-        bullets={[
-          "Budgets, forecasts, and driver‑based models",
-          "Investor‑ready board reporting",
-          "Cash flow and runway management"
-        ]}
-        outcome="Strategic insights, investor trust, and financial foresight."
-        seo="virtual CFO services, outsourced FP&A, startup financial planning"
-      />
-
-      <Section
-        title="Process Automation & Finance Technology"
-        bullets={[
-          "OCR‑based invoice automation and reconciliations",
-          "RPA bots for repetitive workflows",
-          "Implementation of QuickBooks, Xero, NetSuite, D365, BlackLine"
-        ]}
-        outcome="Higher accuracy, faster processes, lower costs."
-        seo="finance automation, RPA for accounting, AI bookkeeping solutions"
-      />
-
-      <Section
-        title="Continuous Monitoring & Risk Insights"
-        bullets={[
-          "Exception reporting and fraud detection alerts",
-          "Vendor risk dashboards and spend analytics",
-          "Continuous financial monitoring systems"
-        ]}
-        outcome="Better governance, proactive fraud prevention, peace of mind."
-        seo="continuous monitoring, fraud detection outsourcing, finance risk analytics"
-      />
-
-      <Section
-        title="ESG / CSRD Readiness"
-        bullets={[
-          "Sustainability KPIs and reporting frameworks",
-          "Governance aligned with CSRD",
-          "Drafting investor/regulator‑ready disclosures"
-        ]}
-        outcome="Compliance with regulators, trust with investors, long‑term value creation."
-        seo="ESG reporting outsourcing, CSRD compliance, sustainability services"
-      />
-
-      <Section
-        title="Global Expansion & Transaction Readiness"
-        bullets={[
-          "GAAP conversion, entity setup, statutory registrations",
-          "Data room prep, working capital analysis, due diligence support",
-          "Fundraising and M&A financial packs"
-        ]}
-        outcome="Ready for investors, buyers, or market expansion."
-        seo="global expansion finance support, transaction readiness, M&A finance services"
-      />
+      {/* CTA STRIP */}
+      <section className="py-16 bg-navy text-white text-center">
+        <div className="container">
+          <h2 className="text-3xl font-bold">Ready to transform your finance function?</h2>
+          <p className="mt-2 text-white/80 max-w-2xl mx-auto">
+            Book a discovery call today and see how INAVA Global can save you time, reduce costs, and deliver board-ready insights.
+          </p>
+          <a href="https://calendly.com/hello-inavaglobal/30min" target="_blank" rel="noopener noreferrer"
+             className="btn-primary mt-6 inline-flex">
+            📅 Book Discovery Call
+          </a>
+        </div>
+      </section>
     </Layout>
   )
 }
