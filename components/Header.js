@@ -25,17 +25,6 @@ export default function Header() {
           <Link href="/services" className="hover:text-slate-600">Services</Link>
           <Link href="/process" className="hover:text-slate-600">Engagement Process</Link>
           <Link href="/about" className="hover:text-slate-600">About</Link>
-
-          {/* Use a plain anchor for Calendly to avoid embedding heavy script/widgets in header */}
-          <a
-            href="https://calendly.com/hello-inavaglobal/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            aria-label="Book a discovery call (opens in new tab)"
-          >
-            Book a discovery call
-          </a>
         </nav>
 
         {/* Desktop Phone CTA */}
@@ -72,18 +61,6 @@ export default function Header() {
             <Link href="/process" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Engagement Process</Link>
             <Link href="/about" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>About</Link>
             <Link href="/contact" className="py-2 hover:text-slate-700" onClick={() => setOpen(false)}>Contact</Link>
-
-            {/* Calendly link for mobile users - plain anchor (no embed) */}
-            <a
-              href="https://calendly.com/hello-inavaglobal/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-2 inline-flex items-center hover:text-slate-700"
-              onClick={() => setOpen(false)}
-              aria-label="Book a discovery call (opens in new tab)"
-            >
-              Book a discovery call
-            </a>
 
             <div className="mt-2 flex flex-col gap-2">
               <a
