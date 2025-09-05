@@ -1,178 +1,232 @@
+import { useState } from 'react'
 import Layout from '../components/Layout'
 
-function Icon({name}) {
-  const common = "h-8 w-8 mb-4";
-  switch(name) {
-    case 'book':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 19.5C3 18.12 4.12 17 5.5 17H20" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M18 3H8a2 2 0 0 0-2 2v14" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'users':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="9" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'chart':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M7 13v5M12 9v9M17 5v13" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'brief':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="7" width="18" height="13" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M16 3v4M8 3v4" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'shield':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2l7 4v6c0 5-3.8 9.7-7 10-3.2-.3-7-5-7-10V6l7-4z" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M9.5 12.5l2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'settings':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06A2 2 0 1 1 2.3 18.9l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.32-.38 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 6.1 3.3l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c.7 0 1.32.38 1.51 1a1.65 1.65 0 0 0 1.82.33l.06-.06A2 2 0 1 1 21.7 5.1l-.06.06a1.65 1.65 0 0 0-.33 1.82c.2.62.82 1 1.51 1H21a2 2 0 1 1 0 4h-.09c-.7 0-1.32.38-1.51 1z" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    case 'globe':
-      return (
-        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 12h20M12 2c2 3 2 7 0 12c-2-5-2-9 0-12z" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    default:
-      return null
+const CAL_LINK = 'https://calendly.com/hello-inavaglobal/30min'
+
+const services = [
+  {
+    id: 'bookkeeping',
+    title: 'Bookkeeping & Year-End',
+    short: 'Audit-ready books, every month and at year-end.',
+    trust: 'UK/US GAAP & IFRS alignment · ACCA/CPA oversight',
+    bullets: [
+      'Monthly bookkeeping: bank reconciliations, ledger maintenance',
+      'Month-end close checklist, variance analysis and P&L review',
+      'Year-end packs and working papers prepared for auditors',
+      'Clean trial balance and audit-ready schedules'
+    ]
+  },
+  {
+    id: 'payroll',
+    title: 'Payroll & Compliance',
+    short: 'Accurate payroll with statutory filings and local compliance.',
+    trust: 'GDPR-aware processes · local filings support',
+    bullets: [
+      'End-to-end payroll processing and payslips',
+      'Statutory filings support (RTI/ PAYE / state filings depending on jurisdiction)',
+      'Benefits & contractor payments reconciliation',
+      'Secure payroll data handling and PII controls'
+    ]
+  },
+  {
+    id: 'reporting',
+    title: 'Management Reporting',
+    short: 'Board-ready packs, KPIs and clear variance insight.',
+    trust: 'Investor-friendly formats · automated packs',
+    bullets: [
+      'Monthly management pack (P&L, Balance Sheet, Cash Flow)',
+      'KPI dashboards and variance commentary',
+      'Quick scenario analysis for board or investor asks',
+      'Automated data pulls from bookkeeping systems'
+    ]
+  },
+  {
+    id: 'ap_ar',
+    title: 'Accounts Payable & Receivable',
+    short: 'Faster cycles, fewer errors, better cash control.',
+    trust: 'MTD-ready AP processes (UK) · revenue recognition aware (US GAAP)',
+    bullets: [
+      'Invoice capture (OCR) and supplier reconciliation',
+      'Payment runs, AP aging and supplier dispute handling',
+      'AR invoicing, credit control and DSO reduction playbook',
+      'Integration with vendor portals and ERP where needed'
+    ]
+  },
+  {
+    id: 'audit',
+    title: 'Audit Assistance',
+    short: 'Smooth auditor handoffs with complete PBCs and reconciliations.',
+    trust: 'Audit-ready PBCs and reconciliations',
+    bullets: [
+      'Prepare PBC schedules, reconciliations and supporting documents',
+      'Coordinate auditor requests and follow-up items',
+      'Pre-audit cleanups to reduce audit adjustments',
+      'Support for Big-4 and mid-tier audit workflows'
+    ]
+  },
+  {
+    id: 'controller',
+    title: 'Controller-as-a-Service',
+    short: 'GAAP/IFRS finalization, policies and controls that stick.',
+    trust: 'Policy frameworks + controls · CFO escalation path',
+    bullets: [
+      'Monthly close governance and journal review',
+      'Prepare and maintain accounting policies (IFRS/US GAAP)',
+      'Intercompany, accruals and complex reconciliations',
+      'SLA driven deliverables with sign-off controls'
+    ]
+  },
+  {
+    id: 'vcfo',
+    title: 'Virtual CFO & FP&A',
+    short: 'Actionable forecasts, budgets and investor reporting.',
+    trust: 'ACCA/CPA-qualified analysts · fundraising-ready reporting',
+    bullets: [
+      'Model building: cash runway, scenario planning and KPIs',
+      'Investor-ready decks and covenant reporting',
+      'Monthly forecast vs actual with clear action items',
+      'Cap table & fundraising financial pack support (if needed)'
+    ]
+  },
+  {
+    id: 'monitoring',
+    title: 'Continuous Monitoring & Risk',
+    short: 'Exception alerts and fraud flags before they become losses.',
+    trust: 'Automated monitoring · configurable rules',
+    bullets: [
+      'Automated exception detection (payments, vendor anomalies)',
+      'Daily / weekly review dashboards and escalation',
+      'Vendor risk & duplicate payment checks',
+      'Support for internal control remediation'
+    ]
   }
+]
+
+// Inline SVG icon (simple radial dot)
+function DotIcon() {
+  return (
+    <svg className="h-3 w-3 shrink-0" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="4" cy="4" r="4" fill="currentColor" />
+    </svg>
+  )
 }
 
-export default function Services() {
-  const core = [
-    { icon: 'book', title: 'Bookkeeping & Year-End', desc: 'Accurate, audit-ready books every month and at year-end.' },
-    { icon: 'users', title: 'Payroll & Compliance', desc: 'On-time payroll with filings handled seamlessly.' },
-    { icon: 'chart', title: 'Management Reporting', desc: 'Board-ready packs with KPIs and variance insights.' },
-    { icon: 'brief', title: 'AP & AR Outsourcing', desc: 'Faster cycles, fewer errors, and improved cash control.' },
-    { icon: 'shield', title: 'Audit Assistance', desc: 'Clean tie-outs, complete PBCs, and smooth auditor handoff.' },
-  ]
+export default function ServicesPage() {
+  const [openId, setOpenId] = useState(null)
 
-  const strategic = [
-    { icon: 'settings', title: 'Controller-as-a-Service', desc: 'GAAP/IFRS finalization with policies and controls that stick.' },
-    { icon: 'chart', title: 'Virtual CFO & FP&A', desc: 'Budgets, forecasts, and cash runway you can act on.' },
-    { icon: 'globe', title: 'Global Expansion', desc: 'Entity setup, cross-border compliance, and intercompany flows.' },
-  ]
-
-  const advisory = [
-    { icon: 'brief', title: 'Transaction Readiness', desc: 'Financial due diligence and prep for investors or exits.' },
-    { icon: 'shield', title: 'Continuous Monitoring', desc: 'Exception alerts and fraud flags before they become losses.' },
-    { icon: 'chart', title: 'ESG / CSRD', desc: 'KPIs, governance frameworks, and draft disclosures.' },
-  ]
-
-  const who = [
-    { title: 'Startups', desc: 'From zero to Series A—finance you can scale with.' },
-    { title: 'Scaling SMEs', desc: 'Tighter controls and insights for growing teams.' },
-    { title: 'Global Subsidiaries', desc: 'Entity management and group reporting simplified.' },
-    { title: 'Accounting Firms', desc: 'Offshore pods for year-end, AP/AR, and audit prep.' },
-  ]
+  const toggle = (id) => {
+    setOpenId(openId === id ? null : id)
+    // optionally: scrollIntoView or focus management could be added here
+  }
 
   return (
     <Layout>
       {/* HERO */}
       <header className="section bg-[#F9F5EE]">
-        <div className="container text-center">
+        <div className="container">
           <span className="badge">What we do</span>
-          <h1 className="mt-3 text-4xl md:text-5xl font-extrabold text-navy">Our Services</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-slate-700 text-lg">
-            From day-to-day accounting to board-ready insights, INAVA Global delivers AI-enabled finance operations with the human expertise you trust.
-          </p>
+          <h1 className="mt-3 text-4xl md:text-5xl font-extrabold text-navy">Services</h1>
+          <p className="mt-4 text-slate-700 max-w-3xl">A focused set of finance services designed for Startups, Scaling SMEs, Global Subsidiaries and Accounting Firms. Click any tile to learn how we add specific value for UK and US clients.</p>
         </div>
       </header>
 
-      {/* CORE FINANCE OPS */}
+      {/* Services grid */}
       <section className="section bg-white">
-        <div className="container">
-          <h2 className="text-2xl font-bold text-navy mb-8">Core Finance Operations</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {core.map((s, i) => (
-              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
-                <Icon name={s.icon} />
-                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
-                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <div className="container grid lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-8">
+            <div className="grid sm:grid-cols-2 gap-6">
+              {services.map((s) => {
+                const isOpen = openId === s.id
+                return (
+                  <article key={s.id} className="group rounded-2xl ring-1 ring-slate-200 bg-white shadow-sm overflow-hidden">
+                    <button
+                      aria-expanded={isOpen}
+                      aria-controls={`${s.id}-panel`}
+                      onClick={() => toggle(s.id)}
+                      className={`w-full text-left flex items-start gap-4 p-5 sm:p-6 ${isOpen ? 'bg-white' : 'hover:bg-slate-50'} focus:outline-none`}
+                    >
+                      <div className="mt-1">
+                        <DotIcon />
+                      </div>
 
-      {/* STRATEGIC FINANCE */}
-      <section className="section bg-[#F9F5EE]">
-        <div className="container">
-          <h2 className="text-2xl font-bold text-navy mb-8">Strategic Finance</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {strategic.map((s, i) => (
-              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
-                <Icon name={s.icon} />
-                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
-                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3 className="text-lg font-semibold text-navy">{s.title}</h3>
+                            <p className="mt-1 text-sm text-slate-600">{s.short}</p>
+                          </div>
 
-      {/* ADVISORY & RISK */}
-      <section className="section bg-white">
-        <div className="container">
-          <h2 className="text-2xl font-bold text-navy mb-8">Advisory & Risk</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {advisory.map((s, i) => (
-              <div key={i} className="group rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:ring-gold transition">
-                <Icon name={s.icon} />
-                <h3 className="font-semibold text-lg text-navy">{s.title}</h3>
-                <p className="mt-2 text-slate-600 text-sm">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                          <div className="ml-3 shrink-0">
+                            <svg className={`h-5 w-5 transform transition-transform ${isOpen ? 'rotate-180' : 'rotate-0'} text-slate-400`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                        </div>
 
-      {/* WHO WE HELP */}
-      <section className="section bg-[#F9F5EE]">
-        <div className="container text-center">
-          <h2 className="text-2xl font-bold text-navy mb-8">Who We Help</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {who.map((c, i) => (
-              <div key={i} className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 shadow-sm hover:shadow-md transition">
-                <h3 className="font-semibold text-lg text-navy">{c.title}</h3>
-                <p className="mt-2 text-slate-600 text-sm">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                        {/* expanded panel */}
+                        {isOpen && (
+                          <div id={`${s.id}-panel`} className="mt-4 border-t border-slate-100 pt-4 text-sm text-slate-700">
+                            <p className="mb-3">{/* optional longer intro can go here */}</p>
 
-      {/* CTA STRIP */}
-      <section className="py-16 bg-navy text-white text-center">
-        <div className="container">
-          <h2 className="text-3xl font-bold">Ready to transform your finance function?</h2>
-          <p className="mt-2 text-white/80 max-w-2xl mx-auto">
-            Book a discovery call today and see how INAVA Global can save you time, reduce costs, and deliver board-ready insights.
-          </p>
-          <a href="https://calendly.com/hello-inavaglobal/30min" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">
-            📅 Book Discovery Call
-          </a>
+                            <ul className="space-y-2 mb-3">
+                              {s.bullets.map((b, idx) => (
+                                <li key={idx} className="flex items-start gap-3">
+                                  <span className="mt-1 text-gold"><DotIcon /></span>
+                                  <span>{b}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            <div className="text-xs text-slate-500 mb-4">✓ {s.trust}</div>
+
+                            <div className="flex flex-wrap gap-3">
+                              <a
+                                href={CAL_LINK}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center rounded-xl bg-gold px-4 py-2 text-sm font-semibold text-navy hover:bg-[#E6CF84] transition"
+                              >
+                                📅 Book a discovery call
+                              </a>
+
+                              <a href="/contact#form" className="inline-flex items-center rounded-xl ring-1 ring-slate-300 px-4 py-2 text-sm hover:bg-slate-50">
+                                💬 Request a proposal
+                              </a>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Right column: Why choose us + CTA */}
+          <aside className="lg:col-span-4 space-y-6">
+            <div className="rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm">
+              <h4 className="font-semibold text-navy">Why choose INAVA Global</h4>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li className="flex items-start gap-3"><span className="mt-1 text-gold"><DotIcon/></span><span>GAAP/IFRS-aligned reporting (UK/US-ready)</span></li>
+                <li className="flex items-start gap-3"><span className="mt-1 text-gold"><DotIcon/></span><span>SOC 2 / ISO-aligned security practices</span></li>
+                <li className="flex items-start gap-3"><span className="mt-1 text-gold"><DotIcon/></span><span>ACCA & CPA-qualified leadership</span></li>
+                <li className="flex items-start gap-3"><span className="mt-1 text-gold"><DotIcon/></span><span>SLA-backed deliveries & quality gates</span></li>
+                <li className="flex items-start gap-3"><span className="mt-1 text-gold"><DotIcon/></span><span>Flexible engagement — hourly / monthly / project</span></li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm text-center">
+              <h4 className="font-semibold text-navy">Not sure where to start?</h4>
+              <p className="mt-2 text-slate-600 text-sm">Book a short 30-minute discovery call and we’ll map a clear plan for your finance operations.</p>
+              <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mt-4 inline-flex">📅 Book discovery call</a>
+            </div>
+
+            <div className="rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm text-sm">
+              <h4 className="font-semibold text-navy">Trust & compliance</h4>
+              <p className="mt-2 text-slate-600">We can host data in EU/US/India, apply least-privilege access, and support auditor & tax requests.</p>
+            </div>
+          </aside>
         </div>
       </section>
     </Layout>
