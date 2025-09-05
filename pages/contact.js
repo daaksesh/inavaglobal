@@ -49,8 +49,8 @@ export default function Contact() {
             <div className="lg:col-span-6 lg:row-span-2">
               <div className="h-full rounded-2xl ring-1 ring-slate-200 bg-white p-6 shadow-sm flex flex-col">
                 <div>
-                  <h3 className="text-xl font-semibold text-navy">Schedule directly</h3>
-                  <p className="mt-2 text-slate-600">Pick a convenient slot for a 30-minute discovery call.</p>
+                  <h3 className="text-xl font-bold text-navy">Schedule directly</h3>
+                  <p className="mt-2 text-slate-600">Pick a convenient slot for a 45-minute discovery call.</p>
                 </div>
 
                 {/* Calendly container: fixed height to avoid internal scroll */}
