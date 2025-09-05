@@ -175,8 +175,8 @@ export default function Contact() {
 
             {/* Right column (calendly) */}
             <div className="lg:col-span-6 flex">
-              <div className="rounded-3xl ring-1 ring-slate-200 bg-white p-6 shadow-sm flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold text-navy">Schedule directly</h3>
+              <div className="rounded-3xl ring-1 ring-slate-200 bg-white p-8 shadow-sm flex-1 flex flex-col">
+                <h3 className="text-2xl font-bold text-navy">Schedule directly</h3>
                 <p className="mt-2 text-slate-600">Pick a convenient slot for a 30-minute discovery call.</p>
 
                 {/* Calendly container — the flex layout + fixed height ensures equal visual height */}
