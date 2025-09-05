@@ -92,7 +92,7 @@ export default function Contact() {
   }, [loadRequested]);
 
   // Calendar fixed visual height to avoid internal scrolling
-  const CALENDLY_HEIGHT = 920; // adjust 900-1000 if needed
+  const CALENDLY_HEIGHT = 1000; // adjust 900-1000 if needed
 
   return (
     <Layout>
