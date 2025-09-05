@@ -31,7 +31,7 @@ export default function Header() {
         {/* Desktop Phone CTA */}
         <a
           href="tel:+919004665866"
-          className="hidden md:inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
+          className="hidden md:inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-bold shadow hover:bg-[#E6CF84] transition"
         >
           📞Call Us Now
         </a>
@@ -66,7 +66,7 @@ export default function Header() {
             <div className="mt-2 flex flex-col gap-2">
               <a
                 href="tel:+919004665866"
-                className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
+                className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-bold shadow hover:bg-[#E6CF84] transition"
               >
                 📞Call Us Now
               </a>
