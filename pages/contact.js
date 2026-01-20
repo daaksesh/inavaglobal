@@ -23,7 +23,7 @@ export default function Contact() {
     <div className="text-center md:text-left">
       <div className="text-sm text-slate-600">Prefer to talk?</div>
       <div className="mt-1 text-2xl font-bold text-navy break-words">
-        +1 646 555 0198
+        +919004665866
       </div>
       <div className="mt-1 text-sm text-slate-500">
         Mon–Fri · 9am–6pm EST
