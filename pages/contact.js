@@ -44,13 +44,13 @@ export default function Contact() {
   <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
     <div className="text-center md:text-left">
       <div className="text-sm text-slate-600">
-        Want to schedule directly?
+        Want to see us?
       </div>
       <div className="mt-1 text-2xl font-bold text-navy">
-        Free 30-minute consultation
+        Schedule a Free Video Consultation
       </div>
       <div className="mt-1 text-sm text-slate-500">
-        Choose a time that works for you
+        at a time that works for you
       </div>
     </div>
 
@@ -60,7 +60,7 @@ export default function Contact() {
       rel="noopener noreferrer"
       className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
     >
-      📅 Schedule now
+      🗓️ Schedule now
     </a>
   </div>
 </section>
