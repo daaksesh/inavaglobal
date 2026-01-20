@@ -17,7 +17,29 @@ export default function Contact() {
         </div>
       </header>
 
-      {/* 1️⃣ EMAIL STRIP (UNCHANGED) */}
+  {/* CALL STRIP */}
+<section className="py-8 bg-white border-y border-slate-200">
+  <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="text-center md:text-left">
+      <div className="text-sm text-slate-600">Prefer to talk?</div>
+      <div className="mt-1 text-2xl font-bold text-navy break-words">
+        +1 646 555 0198
+      </div>
+      <div className="mt-1 text-sm text-slate-500">
+        Mon–Fri · 9am–6pm EST
+      </div>
+    </div>
+
+    <a
+      href="tel:+16465550198"
+      className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
+    >
+      📞 Call us
+    </a>
+  </div>
+</section>
+   
+  {/* 1️⃣ EMAIL STRIP (UNCHANGED) */}
       <section className="py-8 bg-white border-y border-slate-200">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
@@ -38,32 +60,32 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* 2️⃣ SCHEDULE CONSULTATION CTA */}
-      <section className="section bg-white">
-        <div className="container text-center max-w-3xl">
-          <h2 className="text-3xl font-bold text-navy">
-            Schedule a free consultation
-          </h2>
-          <p className="mt-3 text-slate-600 text-lg">
-            Book a 30-minute discovery call at a time that works for you.
-          </p>
+      {/* SCHEDULE CONSULTATION STRIP */}
+<section className="py-8 bg-white border-b border-slate-200">
+  <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="text-center md:text-left">
+      <div className="text-sm text-slate-600">
+        Want to schedule directly?
+      </div>
+      <div className="mt-1 text-2xl font-bold text-navy">
+        Free 30-minute consultation
+      </div>
+      <div className="mt-1 text-sm text-slate-500">
+        Choose a time that works for you
+      </div>
+    </div>
 
-          <div className="mt-8">
-            <a
-              href="https://outlook.office.com/book/FreeConsultationwithInavaGlobal@inavaglobal.com/?ismsaljsauthenabled=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-gold px-8 py-4 text-lg font-semibold text-navy shadow hover:bg-[#E6CF84] transition"
-            >
-              📅 Schedule free consultation
-            </a>
-          </div>
+    <a
+      href="https://outlook.office.com/book/FreeConsultationwithInavaGlobal@inavaglobal.com/?ismsaljsauthenabled=true"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
+    >
+      📅 Schedule now
+    </a>
+  </div>
+</section>
 
-          <p className="mt-3 text-sm text-slate-500">
-            Opens Microsoft Bookings in a new tab
-          </p>
-        </div>
-      </section>
 
       {/* 3️⃣ SEND MESSAGE FORM */}
       <section className="section bg-white">
