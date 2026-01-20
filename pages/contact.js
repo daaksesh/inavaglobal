@@ -39,27 +39,6 @@ export default function Contact() {
   </div>
 </section>
    
-  {/* 1️⃣ EMAIL STRIP (UNCHANGED) */}
-      <section className="py-8 bg-white border-y border-slate-200">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <div className="text-sm text-slate-600">Prefer email?</div>
-            <div className="mt-1 text-2xl font-bold text-navy break-words">
-              hello@inavaglobal.com
-            </div>
-            <div className="mt-1 text-sm text-slate-500">
-              We respond within 48 business hours.
-            </div>
-          </div>
-          <a
-            href="mailto:hello@inavaglobal.com"
-            className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
-          >
-            ✉️ Email us
-          </a>
-        </div>
-      </section>
-
       {/* SCHEDULE CONSULTATION STRIP */}
 <section className="py-8 bg-white border-b border-slate-200">
   <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
@@ -86,8 +65,28 @@ export default function Contact() {
   </div>
 </section>
 
-
-      {/* 3️⃣ SEND MESSAGE FORM */}
+ {/* 1️⃣ EMAIL STRIP (UNCHANGED) */}
+      <section className="py-8 bg-white border-y border-slate-200">
+        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left">
+            <div className="text-sm text-slate-600">Prefer email?</div>
+            <div className="mt-1 text-2xl font-bold text-navy break-words">
+              hello@inavaglobal.com
+            </div>
+            <div className="mt-1 text-sm text-slate-500">
+              We respond within 48 business hours.
+            </div>
+          </div>
+          <a
+            href="mailto:hello@inavaglobal.com"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
+          >
+            ✉️ Email us
+          </a>
+        </div>
+      </section>
+     
+  {/* 3️⃣ SEND MESSAGE FORM */}
       <section className="section bg-white">
         <div className="container max-w-3xl">
           <div className="rounded-3xl ring-1 ring-slate-200 bg-white p-8 md:p-10 shadow-sm">
