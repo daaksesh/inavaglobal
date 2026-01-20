@@ -23,7 +23,7 @@ export default function Contact() {
     <div className="text-center md:text-left">
       <div className="text-sm text-slate-600">Prefer to talk?</div>
       <div className="mt-1 text-2xl font-bold text-navy break-words">
-        +919004665866
+        Feel free to call us
       </div>
       <div className="mt-1 text-sm text-slate-500">
         Mon–Fri · 9am–6pm EST
@@ -31,10 +31,10 @@ export default function Contact() {
     </div>
 
     <a
-      href="tel:+16465550198"
+      href="tel:+919004665866"
       className="inline-flex items-center justify-center rounded-xl bg-gold px-5 py-3 text-navy font-semibold shadow hover:bg-[#E6CF84] transition"
     >
-      📞 Call us
+      📞 +919004665866
     </a>
   </div>
 </section>
