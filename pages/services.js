@@ -6,68 +6,52 @@ const BOOKING_LINK =
 
 const services = [
   {
-    id: 'bookkeeping',
-    title: 'Bookkeeping & Year-End',
-    short: 'Audit-ready books, every month and at year-end.',
-    trust: 'EU & US GAAP / IFRS alignment · ACCA/CPA oversight',
+    id: 'cfo',
+    title: 'Strategic Finance & CFO Advisory',
+    short: 'CFO-level insight without full-time overhead.',
+    trust: 'ACCA/CPA leadership · Investor & board-ready outputs',
     story:
-      'Many fast-growing companies struggle with messy ledgers and last-minute year-end headaches. We act as your monthly close partner — reconciling accounts, preparing audit-ready schedules and aligning reports to EU/US GAAP or IFRS. With ACCA/CPA oversight, you gain faster closes, cleaner audits and investor-ready financials.'
+      'We operate as an extension of your leadership team—bringing financial strategy, forecasting, and decision support that growing businesses need. From budgeting and scenario modeling to profitability improvement and funding strategy, we help you move from reactive finance to structured financial leadership.'
   },
   {
-    id: 'payroll',
-    title: 'Payroll & Compliance',
-    short: 'Accurate payroll with statutory filings and regional compliance.',
-    trust: 'GDPR-aware processes · EU & US local filings support',
+    id: 'governance',
+    title: 'Governance, Risk & Internal Audit',
+    short: 'Stronger controls, reduced risk, and audit confidence.',
+    trust: 'IFC frameworks · ERM design · Audit committee reporting',
     story:
-      'Payroll is both a people and compliance function: mistakes cost trust and fines. We run end-to-end payroll (including contractor pay), prepare local filings, and protect personal data with secure workflows—so your team is paid on time and regulators are satisfied.'
+      'As businesses scale, risk and compliance become critical. We design internal control frameworks, perform internal audits, assess fraud risks, and establish governance structures that boards, investors, and regulators trust. Our approach balances control with operational efficiency.'
   },
   {
     id: 'reporting',
-    title: 'Management Reporting',
-    short: 'Board-ready packs, KPIs and clear variance insight.',
-    trust: 'Investor-friendly formats · automated packs',
+    title: 'Financial Reporting & Performance Intelligence',
+    short: 'Decision-ready reporting, not just financial statements.',
+    trust: 'IFRS / US GAAP / UK GAAP · Board-level MIS',
     story:
-      'Boards and investors want clarity, not spreadsheets. We design monthly management packs with KPIs, variance commentary and scenario analysis—formatted for EU/US reporting expectations—so leaders can make decisive, confident choices.'
+      'We transform financial data into leadership insight. From statutory financial statements to KPI dashboards and board reporting packs, we ensure clarity, compliance, and actionable performance visibility across entities and geographies.'
   },
   {
-    id: 'ap_ar',
-    title: 'Accounts Payable & Receivable',
-    short: 'Faster cycles, fewer errors, better cash control.',
-    trust: 'MTD-aware AP processes · revenue recognition aware (US GAAP)',
+    id: 'capital',
+    title: 'Credit, Capital & Financial Analysis',
+    short: 'Supporting funding, lending, and investment decisions.',
+    trust: 'Credit appraisal expertise · Cash flow & covenant analysis',
     story:
-      'Cash management separates winners from the rest. We streamline AP from capture to payment, and AR from invoicing to collections—reducing DSO and improving supplier relationships—while ensuring compliance for EU and US regulations where applicable.'
+      'We bridge finance operations with capital strategy. Our team prepares due diligence reports, credit appraisals, cash flow analysis, and covenant monitoring—helping businesses and financial stakeholders make informed funding and investment decisions.'
   },
   {
-    id: 'audit',
-    title: 'Audit Assistance',
-    short: 'Smooth auditor handoffs with complete PBCs and reconciliations.',
-    trust: 'Audit-ready PBCs and reconciliations',
+    id: 'operations',
+    title: 'Finance Operations & Execution',
+    short: 'Reliable day-to-day finance under structured oversight.',
+    trust: 'Audit-ready books · Controlled processes',
     story:
-      'Audits are stressful when documents are scattered. We assemble clean PBC schedules, reconciliations and tie-outs so external auditors—whether Big-4 or regional firms in EU/US—get exactly what they need. The result: fewer adjustments and faster sign-offs.'
+      'Our execution team manages bookkeeping, month-end close, AP/AR, payroll, cost accounting, and compliance support. Unlike traditional outsourcing providers, our operations are guided by governance frameworks and senior oversight, ensuring accuracy and control.'
   },
   {
-    id: 'controller',
-    title: 'Controller-as-a-Service',
-    short: 'GAAP/IFRS finalization, policies and controls that stick.',
-    trust: 'Policy frameworks + controls · CFO escalation path',
+    id: 'transformation',
+    title: 'Finance Transformation & Automation',
+    short: 'Modernizing finance for efficiency and scale.',
+    trust: 'Process optimization · ERP & reporting automation',
     story:
-      'Growing businesses need accounting governance without the full-time overhead. Our controller service provides close governance, accounting policies and intercompany controls—delivering reliable numbers and compliance while keeping costs predictable.'
-  },
-  {
-    id: 'vcfo',
-    title: 'Virtual CFO & FP&A',
-    short: 'Actionable forecasts, budgets and investor reporting.',
-    trust: 'ACCA/CPA-qualified analysts · fundraising-ready reporting',
-    story:
-      'Not every company needs a full-time CFO. Our virtual CFO service brings modeling, runway analysis and fundraising packs so founders and boards get CFO-level insight—at a fraction of the cost and fully aligned to EU/US investor expectations.'
-  },
-  {
-    id: 'monitoring',
-    title: 'Continuous Monitoring & Risk',
-    short: 'Exception alerts and fraud flags before they become losses.',
-    trust: 'Automated monitoring · configurable rules',
-    story:
-      'Small anomalies can become big problems. We set up automated monitoring and exception analytics to flag suspicious payments, vendor anomalies and control lapses early—reducing financial risk and keeping your teams focused on growth.'
+      'We help finance functions evolve. Through process reengineering, ERP optimization, reporting automation, and SOP design, we reduce manual risk, improve speed, and build scalable finance infrastructure aligned with growth.'
   }
 ]
 
@@ -96,12 +80,12 @@ export default function ServicesPage() {
         <div className="container">
           <span className="badge">What we do</span>
           <h1 className="mt-3 text-4xl md:text-5xl font-extrabold text-navy">
-            Services
+            Strategic Finance, Governance & Execution Services
           </h1>
           <p className="mt-4 text-slate-700 max-w-3xl">
-            A focused set of finance services designed for Startups, Scaling SMEs,
-            Global Subsidiaries and Accounting Firms. Hover or tap any service to
-            explore how we help EU & US clients.
+            We combine CFO-level advisory, governance expertise, and full-stack
+            finance execution—helping growing businesses build control, gain
+            clarity, and scale with confidence.
           </p>
         </div>
       </header>
@@ -130,16 +114,12 @@ export default function ServicesPage() {
                   onFocus={() => setHoverId(s.id)}
                   onBlur={() => !lockedId && setHoverId(null)}
                   onClick={() =>
-                    setLockedId((prev) =>
-                      prev === s.id ? null : s.id
-                    )
+                    setLockedId((prev) => (prev === s.id ? null : s.id))
                   }
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault()
-                      setLockedId((prev) =>
-                        prev === s.id ? null : s.id
-                      )
+                      setLockedId((prev) => (prev === s.id ? null : s.id))
                     }
                     if (e.key === 'Escape') {
                       setLockedId(null)
@@ -156,7 +136,6 @@ export default function ServicesPage() {
                     focus-visible:ring-2 focus-visible:ring-gold
                   `}
                 >
-                  {/* HEADER */}
                   <div className="flex gap-4 items-start">
                     <div className="mt-1 text-gold">
                       <DotIcon />
@@ -173,7 +152,6 @@ export default function ServicesPage() {
                           </p>
                         </div>
 
-                        {/* ROTATING CHEVRON */}
                         <svg
                           className={`
                             h-5 w-5 shrink-0 transition-transform duration-300
@@ -185,7 +163,6 @@ export default function ServicesPage() {
                           `}
                           viewBox="0 0 20 20"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M6 4l8 6-8 6V4z"
@@ -199,7 +176,6 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* EXPANDABLE CONTENT */}
                   <div
                     id={`service-${s.id}`}
                     className={`
